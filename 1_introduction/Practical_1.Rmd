@@ -13,7 +13,8 @@
 We can discuss your solution next week. However, you are welcome to attach an image here if you wish. The following syntax can be used to include an image in a Jupyter or notebook:
 
 ```markdown
-![](image_URL)
+![](https://drive.google.com/file/d/1DjICv1pZ6is6o9ksny59Xlhh2bgdMr1h/view?usp=sharing)
+
 
 
 ```
@@ -142,6 +143,8 @@ y_axis<-(x_axis^2 + 2*(x_axis) + 3)
 ```{r}
 # Write you code in this cell
 qplot(x=x_axis, y=y_axis,xlab="x axis", ylab="y axis", main="My Cool Plot",size=(0.5))
+
+![](https://drive.google.com/file/d/1AwKfOO6kjWnPlhAODNvk4iK4kVHN8vmp/view?usp=sharing)
 
 ```
 
