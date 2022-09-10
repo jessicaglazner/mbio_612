@@ -8,6 +8,7 @@
 
 ```{r}
 # Add your photo here
+![]https://drive.google.com/file/d/1QVyeD5KHZ37YT5uMpu5j8Tp-hE6oRS3O/view?usp=sharing
 ```
 
 #### Question 1
@@ -64,6 +65,8 @@ Hint: Use the `?` symbol to invoke the matrix documentation
 
 ```{r}
 # Write your answer here
+mymatrix<-matrix(c(1:6),nrow=3,ncol=2,byrow=TRUE,dimnames=list(c("row_1","row_2","row_3"),c("col_1","col_2")))
+mymatrix
 ```
 
 #### Question 2
@@ -74,6 +77,9 @@ Hint: Use the `?` symbol to invoke the matrix documentation
 
 ```{r}
 # Write your answer here
+data("airquality")
+ordered<-airquality[order(-airquality$Temp, -airquality$Solar.R),]
+head(ordered,n=15)
 ```
 
 #### Question 3
@@ -83,6 +89,8 @@ Hint: Use the `?` symbol to invoke the matrix documentation
 
 ```{r}
 # Write your answer here
+ordered2<-airquality[order(-airquality$Temp, airquality$Solar.R),]
+head(ordered2,n=15)
 ```
 
 #### Question 4
@@ -95,6 +103,13 @@ Hint: Use the `?` symbol to invoke the matrix documentation
 
 ```{r}
 # Write your answer here
+#1
+airquality$Temp==72
+temp_72<-airquality$Temp==72
+airquality[temp_72,]
+
+#2
+subset(airquality,Temp==72)
 ```
 
 #### Question 6
@@ -112,6 +127,18 @@ Hint: Use the `?` symbol to invoke the matrix documentation
 
 ```{r}
 # Write your answer here
+#Remove Solar.R N/A's
+missing_Solar.R<-is.na(airquality$Solar.R)
+airquality[missing_Solar.R,]
+airquality[c(-5,-6,-11,-27,-96,-97,-98),]
+#Remove Ozone N/A's
+missing_Ozone<-is.na(airquality$Ozone)
+airquality[missing_Ozone,]
+airquality[c(-5,-10,-25,-26,-27,-32,-33,-34,-35,-36,-37,-39,-42,-43,-45,-46,-52,-53,-54,-55,-56,-57,-58,-59,-60,-61,-65,-72,-75,-83,-84,-102,-103,-107,-115,-119,-150),]
+#Remove Both Solar.R and Ozone N/A's
+airquality_no_na<-airquality[c(-5,-6,-10,-11,-25,-26,-27,-32,-33,-34,-35,-36,-42,-43,-45,-46,-52,-53,-54,-55,-56,-57,-58,-59,-60,-61,-65,-72,-75,-83,-84,-96,-97,-98,-102,-103,-107,-115,-119,-150),]
+
+#153-113= 40 lines have been removed
 ```
 
 #### Question 7
@@ -123,5 +150,27 @@ Hint: Use the `?` symbol to invoke the matrix documentation
 
 ```{r}
 # Write your answer here
+#May Mean
+solar_r_may<-subset(airquality,Month==5)$Solar.R
+solar_r_may
+mean(solar_r_may,na.rm=TRUE)
+na_may<-subset(airquality,(solar_r_may)&(missing_Solar.R))
+# Solar.R mean of may = 181
+
+#Aug Mean
+solar_r_aug<-subset(airquality,Month==8)$Solar.R
+solar_r_aug
+mean(solar_r_aug,na.rm=TRUE)
+#Solar.R mean of aug = 172
+
+#Replace NA's with means
+
+airquality[5,2]=181
+airquality[6,2]=181
+airquality[11,2]=181
+airquality[27,2]=181
+airquality[96,2]=172
+airquality[97,2]=172
+airquality[98,2]=172
 ```
 
